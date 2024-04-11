@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire Mignon</title>
+  <link rel="stylesheet" href="design code lola 1.css">
+</head>
+<body>
+  <h1 class="title">ensuite...</h1>
+  <div class="questionnaire">
+    <form id="quizForm" onsubmit="submitForm(); return false;">
+      <div class="question" data-correct="23">
+        <p>Question 1: quand est ce que nous avons fait notre premier restaurant?</p>
+       <center> <label><input type="radio" name="q1" value="22"> le 22 novembre 2023 </label><br>
+        <label><input type="radio" name="q1" value="23"> le 23 novembre 2023 </label><br>
+        <label><input type="radio" name="q1" value="24"> le 24 novembre 2023 </label><br> </center>	
+      </div>
+      <div class="question" data-correct="soleil">
+        <center><p>Question 2: ou j'aimerais habiter plus tard ?</p>
+        <label><input type="radio" name="q2" value="soleil"> au soleil </label><br>
+        <label><input type="radio" name="q2" value="neige"> a la neige </label><br>
+        <label><input type="radio" name="q2" value="etranger"> à l'etranger </label><br></center>
+      </div>
+      <div class="question" data-correct="bleu">
+        <p>Question 3: comment etais-je habillé le jour de notre rencontre ? </p>
+        <center><label><input type="radio" name="q3" value="vert"> polo a rayure bleu et vert</label><br>
+        <label><input type="radio" name="q3" value="bleu"> polo a rayure jaune et bleu </label><br>
+        <label><input type="radio" name="q3" value="rose"> polo a rayure bleu , vert et rose </label><br></center>
+      </div>
+      <div class="question" data-correct="sourire">
+        <center><p>Question 4: qu'est ce qui m'a plu en premier chez toi?</p>
+        <label><input type="radio" name="q4" value="yeux"> tes yeux </label><br>
+        <label><input type="radio" name="q4" value="fesses"> tes fesses </label><br>
+        <label><input type="radio" name="q4" value="sourire"> ton sourire </label><br></center>
+      </div>
+      <div class="question" data-correct="grincheux">
+        <center><p>Question 5: si j'etais un des 7 nains, lequel je serais?</p>
+        <label><input type="radio" name="q5" value="grincheux"> Grincheux </label><br>
+        <label><input type="radio" name="q5" value="prof"> Prof </label><br>
+        <label><input type="radio" name="q5" value="timide"> Timide </label><br></center>
+      </div>
+	  <br>
+	  <br>
+      <center><button type="submit">Soumettre</button></center>
+    </form>
+  </div>
+  <div id="results" style="display: none;">
+    <h2>Résultats:</h2>
+    <div id="score"></div>
+  </div>
+
+   <script>
+    function submitForm() {
+      var correctAnswers = document.querySelectorAll('.question');
+      var score = 0;
+
+      correctAnswers.forEach(function(question) {
+        var correct = question.getAttribute('data-correct');
+        var userAnswer = question.querySelector('input:checked');
+        if (userAnswer && correct === userAnswer.getAttribute('value')) {
+          score++;
+        }
+      });
+
+      var results = document.getElementById('results');
+      var scoreDisplay = document.getElementById('score');
+      scoreDisplay.textContent = "Score: " + score + "/5";
+      results.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

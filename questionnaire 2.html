@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire Mignon</title>
+  <link rel="stylesheet" href="design code lola 1.css">
+</head>
+<body>
+  <h1 class="title">on continue...</h1>
+  <div class="questionnaire">
+    <form id="quizForm" onsubmit="submitForm(); return false;">
+      <div class="question" data-correct="rencontre">
+        <p>Question 1: quelle est mon meilleur souvenir, selon toi, nous concernant?</p>
+       <center> <label><input type="radio" name="q1" value="rencontre"> notre rencontre</label><br>
+        <label><input type="radio" name="q1" value="date"> notre premier date</label><br>
+        <label><input type="radio" name="q1" value="resto"> notre premier resto</label><br> </center>	
+      </div>
+      <div class="question" data-correct="confiance">
+        <center><p>Question 2: quelle est mon pire defaut, selon moi ?</p>
+        <label><input type="radio" name="q2" value="egocentrique">egocentrique</label><br>
+        <label><input type="radio" name="q2" value="confiance">manque de confiance</label><br>
+        <label><input type="radio" name="q2" value="bavard">bavard</label><br></center>
+      </div>
+      <div class="question" data-correct="japon">
+        <p>Question 3: quel endroit j'aimerais visiter avec toi? </p>
+        <center><label><input type="radio" name="q3" value="japon"> le Japon</label><br>
+        <label><input type="radio" name="q3" value="italie"> l'Italie </label><br>
+        <label><input type="radio" name="q3" value="brésil"> le Brésil </label><br></center>
+      </div>
+      <div class="question" data-correct="rocket league">
+        <center><p>Question 4: quel est mon jeu vidéo préféré?</p>
+        <label><input type="radio" name="q4" value="Valorant"> Valorant </label><br>
+        <label><input type="radio" name="q4" value="rocket league"> Rocket League </label><br>
+        <label><input type="radio" name="q4" value="call of"> Call of Duty </label><br></center>
+      </div>
+      <div class="question" data-correct="frite/steak">
+        <center><p>Question 5: quel est mon repas préféré en ce moment?</p>
+        <label><input type="radio" name="q5" value="pates carbo"> pates carbo </label><br>
+        <label><input type="radio" name="q5" value="frite/steak"> Frites de patates douce/steak </label><br>
+        <label><input type="radio" name="q5" value="pizza"> pizza </label><br></center>
+      </div>
+	  <br>
+	  <br>
+      <center><button type="submit">Soumettre</button></center>
+    </form>
+  </div>
+  <div id="results" style="display: none;">
+    <h2>Résultats:</h2>
+    <div id="score"></div>
+  </div>
+
+   <script>
+    function submitForm() {
+      var correctAnswers = document.querySelectorAll('.question');
+      var score = 0;
+
+      correctAnswers.forEach(function(question) {
+        var correct = question.getAttribute('data-correct');
+        var userAnswer = question.querySelector('input:checked');
+        if (userAnswer && correct === userAnswer.getAttribute('value')) {
+          score++;
+        }
+      });
+
+      var results = document.getElementById('results');
+      var scoreDisplay = document.getElementById('score');
+      scoreDisplay.textContent = "Score: " + score + "/5";
+      results.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

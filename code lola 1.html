@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Numeric Keypad</title>
+  <link rel="stylesheet" href="design code lola 1.css">
+</head>
+<body>
+  <h1 class="title"> <FONT face="Courier New"> Bienvenue chat </h1></FONT>
+  <div class="keypad">
+    <input type="text" id="display" readonly>
+    <div class="keys">
+      <button class="key" onclick="appendToDisplay('1')">1</button>
+      <button class="key" onclick="appendToDisplay('2')">2</button>
+      <button class="key" onclick="appendToDisplay('3')">3</button>
+      <button class="key" onclick="appendToDisplay('4')">4</button>
+      <button class="key" onclick="appendToDisplay('5')">5</button>
+      <button class="key" onclick="appendToDisplay('6')">6</button>
+      <button class="key" onclick="appendToDisplay('7')">7</button>
+      <button class="key" onclick="appendToDisplay('8')">8</button>
+      <button class="key" onclick="appendToDisplay('9')">9</button>
+      <button class="key clear" onclick="clearDisplay()">C</button>
+      <button class="key" onclick="appendToDisplay('0')">0</button>
+      <button class="key" onclick="appendToDisplay('.')">.</button>
+    </div>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+      checkCode();
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function checkCode() {
+      var code = document.getElementById('display').value;
+      if (code === '181123') {
+        window.location.href = 'questionnaire 1.html';
+      }
+    }
+  </script>  
+</body>
+</html>

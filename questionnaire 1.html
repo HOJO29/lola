@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire Mignon</title>
+  <link rel="stylesheet" href="design code lola 1.css">
+</head>
+<body>
+  <h1 class="title">on commence doucement ...</h1>
+  <div class="questionnaire">
+    <form id="quizForm" onsubmit="submitForm(); return false;">
+      <div class="question" data-correct="hondschoote">
+        <p>Question 1: Quelle est la ville ou jordan a grandi ?</p>
+       <center> <label><input type="radio" name="q1" value="hondschoote"> hondschoote</label><br>
+        <label><input type="radio" name="q1" value="dunkerque"> dunkerque</label><br>
+        <label><input type="radio" name="q1" value="killem"> killem</label><br> </center>	
+      </div>
+      <div class="question" data-correct="25 ans">
+        <center><p>Question 2: quel est l'age de jordan ?</p>
+        <label><input type="radio" name="q2" value="22 ans"> 22 ans</label><br>
+        <label><input type="radio" name="q2" value="25 ans"> 25 ans</label><br>
+        <label><input type="radio" name="q2" value="27 ans"> 27 ans</label><br></center>
+      </div>
+      <div class="question" data-correct="bleu">
+        <p>Question 3: quelle est la couleur de ses yeux ?</p>
+        <center><label><input type="radio" name="q3" value="marron"> marron</label><br>
+        <label><input type="radio" name="q3" value="vert"> vert </label><br>
+        <label><input type="radio" name="q3" value="bleu"> bleu </label><br></center>
+      </div>
+      <div class="question" data-correct="assistant d'education">
+        <center><p>Question 4: que fait il dans la vie?</p>
+        <label><input type="radio" name="q4" value="assistant d'education"> assistant d'education </label><br>
+        <label><input type="radio" name="q4" value="agent de sécurité"> agent de sécurité </label><br>
+        <label><input type="radio" name="q4" value="livreur"> livreur </label><br></center>
+      </div>
+      <div class="question" data-correct="l'audiovisuel">
+        <center><p>Question 5: Quel est sa passion ?</p>
+        <label><input type="radio" name="q5" value="l'audiovisuel"> l'audiovisuel </label><br>
+        <label><input type="radio" name="q5" value="les jeux videos"> les jeux videos </label><br>
+        <label><input type="radio" name="q5" value="la musique"> la musique </label><br></center>
+      </div>
+	  <br>
+	  <br>
+      <center><button type="submit">Soumettre</button></center>
+    </form>
+  </div>
+  <div id="results" style="display: none;">
+    <h2>Résultats:</h2>
+    <div id="score"></div>
+  </div>
+
+   <script>
+    function submitForm() {
+      var correctAnswers = document.querySelectorAll('.question');
+      var score = 0;
+
+      correctAnswers.forEach(function(question) {
+        var correct = question.getAttribute('data-correct');
+        var userAnswer = question.querySelector('input:checked');
+        if (userAnswer && correct === userAnswer.getAttribute('value')) {
+          score++;
+        }
+      });
+
+      var results = document.getElementById('results');
+      var scoreDisplay = document.getElementById('score');
+      scoreDisplay.textContent = "Score: " + score + "/5";
+      results.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

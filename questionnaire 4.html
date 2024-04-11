@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire Mignon</title>
+  <link rel="stylesheet" href="design code lola 1.css">
+</head>
+<body>
+<br>
+  <h1 class="title">pour finir !</h1>
+  <div class="questionnaire">
+    <form id="quizForm" onsubmit="submitForm(); return false;">
+      <div class="question" data-correct="paillotte">
+        <p>Question 1: si je devais choisir un restaurant ou t'emmener bientot, lequel cela serait ?</p>
+       <center> <label><input type="radio" name="q1" value="escale"> l'escale bizantine </label><br>
+        <label><input type="radio" name="q1" value="moon"> le moonshiner </label><br>
+        <label><input type="radio" name="q1" value="paillotte"> la paillote </label><br> </center>	
+      </div>
+      <div class="question" data-correct="volant">
+        <center><p>Question 2: quelle est ma pire habitude à changer ?</p>
+        <label><input type="radio" name="q2" value="volant"> j'ecris au volant </label><br>
+        <label><input type="radio" name="q2" value="rale"> je rale souvent </label><br>
+        <label><input type="radio" name="q2" value="retard"> je suis regulierement en retard </label><br></center>
+      </div>
+      <div class="question" data-correct="19">
+        <p>Question 3: quelle est l'heure du premier message que tu m'a envoyé juste après s'etre vu pour la premiere fois? </p>
+        <center><label><input type="radio" name="q3" value="25"> 2h25 </label><br>
+        <label><input type="radio" name="q3" value="8"> 3h08 </label><br>
+        <label><input type="radio" name="q3" value="19"> 3h19 </label><br></center>
+      </div>
+      <div class="question" data-correct="pompe">
+        <center><p>Question 4: justement , ou etais je au moment de ce message ?</p>
+        <label><input type="radio" name="q4" value="volant"> au volant </label><br>
+        <label><input type="radio" name="q4" value="pompe"> a la pompe a essence </label><br>
+        <label><input type="radio" name="q4" value="moi"> bien arrivé chez moi </label><br></center>
+      </div>
+      <div class="question" data-correct="oui">
+        <center><p>Question 5: as-tu etait 100% honnête avec moi depuis le debut? </p>
+        <label><input type="radio" name="q5" value="oui"> oui bien evidemment, je t'aime </label><br>
+        <label><input type="radio" name="q5" value="non"> non , je suis désolé... </label><br>
+        <label><input type="radio" name="q5" value="maitre"> oui maitre, je vous suis honnete et je le serais a la vie a la muerte </label><br></center>
+      </div>
+	  <br>
+	  <br>
+      <center><button type="submit">Soumettre</button></center>
+    </form>
+  </div>
+  <div id="results" style="display: none;">
+    <h2>Résultats:</h2>
+    <div id="score"></div>
+  </div>
+
+   <script>
+    function submitForm() {
+      var correctAnswers = document.querySelectorAll('.question');
+      var score = 0;
+
+      correctAnswers.forEach(function(question) {
+        var correct = question.getAttribute('data-correct');
+        var userAnswer = question.querySelector('input:checked');
+        if (userAnswer && correct === userAnswer.getAttribute('value')) {
+          score++;
+        }
+      });
+
+      var results = document.getElementById('results');
+      var scoreDisplay = document.getElementById('score');
+      scoreDisplay.textContent = "Score: " + score + "/5";
+      results.style.display = 'block';
+    }
+  </script>
+  <br>
+  <br>
+  <br>
+  <button onclick="window.location.href='fin.html'">Suivant</button>
+</body>
+</html>
